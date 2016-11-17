@@ -1,21 +1,32 @@
+<!DOCTYPE html>
 <html>
 <head>
-  <meta charset="utf-8">
-  <title>speaker</title>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+
+  <title>Speaker.js</title>
+  <meta name="description" content=""/>
+  <meta name="keywords" content="speaker.js,speaker,音声,再生,ブラウザ,chrome,safari,firefox,iphone,android"/>
+
   <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.3/semantic.min.css">
 </head>
+
 <body>
-  <div class="ui stackable three column centered grid">
+  <div class="ui basic very padded segment" style="margin: 50px 10%;">
     <div class="center aligned column">
       <div class="ui relaxed horizontal list">
         <div class="item">
-          <span class="speaker" data-text="hello world" data-lang="en-US">&#x1F4E2</span>
+          <i class="speaker icon volume up" data-text="hello world" data-lang="en-US"></i>
         </div>
         <div class="item">
-          <span class="speaker" data-text="이심전심" data-lang="ko-KR">&#x1F4E2</span>
+          <i class="speaker icon volume up" data-text="이심전심" data-lang="ko-KR"></i>
         </div>
         <div class="item">
-          <span class="speaker" data-text="こんにちは" data-lang="ja-JP">&#x1F4E2</span>
+          <i class="speaker icon volume up" data-text="こんにちは" data-lang="ja-JP"></i>
+        </div>
+        <div class="item">
+          <button class="speaker button" data-text="aaa" data-lang="en-US">speak</button>
         </div>
       </div>
     </div>
@@ -24,16 +35,18 @@
   <script>
     window.onload = function () {
       if (typeof(speechSynthesis) == "undefined") {
-        alert("no speech synthesis");
         var speakers = document.querySelectorAll(".speaker");
         for(i=0 ; i<speakers.length ; i++){
+          if(speakers[i].tagName.toUpperCase()=='I' && speakers[i].parentNode.tagName.toUpperCase()=='SPAN') {
+            speakers[i].parentNode.dataset.tooltip = speakers[i].getAttribute("data-text");
+            speakers[i].parentNode.dataset.inverted = true;
+          }
           speakers[i].addEventListener("click", function(e){
             alert('お使いのブラウザは音声再生に対応していないようです。GoogleChromeでの利用をオススメします。');
           });
         }
         return;
       }
-      alert("yes speech synthesis");
 
       var isSpeakerInitialized = false;
 
@@ -53,17 +66,27 @@
 
         var speakers = document.querySelectorAll(".speaker");
         for(i=0 ; i<speakers.length ; i++){
-          speakers[i].addEventListener("click", function(e){
-          var synth = new SpeechSynthesisUtterance();
-          synth.text = e.target.getAttribute("data-text");
-          synth.lang = e.target.getAttribute("data-lang");
+          var parent = speakers[i].parentNode;
+          var span = document.createElement('span');
+          span.dataset.tooltip = speakers[i].getAttribute("data-text");
+          span.dataset.inverted = true;
+          span.appendChild(speakers[i]);
+          parent.appendChild(span);
 
-          for (var j = 0; j < systemVoices.length; j++) {
-            if (systemVoices[j].lang == synth.lang){
-              synth.voice = systemVoices[j];
+          speakers[i].addEventListener("click", function(e){
+            var synth = new SpeechSynthesisUtterance();
+            synth.text = e.target.getAttribute("data-text");
+            synth.lang = e.target.getAttribute("data-lang");
+
+            for (var j = 0; j < systemVoices.length; j++) {
+              if (systemVoices[j].lang == synth.lang){
+                synth.voice = systemVoices[j];
+              }
             }
-          }
-          if(!synth.voice){ alert('対応言語がありません:'+synth.lang); }
+            if(!synth.voice){ 
+              alert('ごめんなさい、お使いのブラウザがこの言語に対応していないようです...');
+              return;
+            }
             speechSynthesis.speak(synth);
           });
         }
@@ -72,4 +95,3 @@
   </script>
 </body>
 </html>
-
