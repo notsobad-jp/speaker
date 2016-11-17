@@ -40,7 +40,7 @@
 
       if ('onvoiceschanged' in speechSynthesis) {
         alert("exists");
-      else {
+      }else {
         alert("not exists");
       }
       
@@ -48,7 +48,7 @@
         speechSynthesis.onvoiceschanged = function(){
           afterVoiceChanged();
         }
-      else {
+      }else {
           afterVoiceChanged();
       }
        
