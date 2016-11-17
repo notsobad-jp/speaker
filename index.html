@@ -1,0 +1,56 @@
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>speaker</title>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+</head>
+<body>
+  <div style="margin: 10px 5%;">
+    <i class="speaker fa fa-volume-up" data-text="이심전심" data-lang="ko-KR"></i>
+    <br>
+    <span class="speaker" data-text="hello world" data-lang="en-US">&#x1F4E2</span>
+    <br>
+    <span class="speaker" data-text="こんにちは" data-lang="ja-JP">&#x1F4E2</span>
+  </div>
+
+  <script>
+    window.onload = function () {
+      if (!'SpeechSynthesisUtterance' in window) {
+        var speakers = document.querySelectorAll(".speaker");
+        for(i=0 ; i<speakers.length ; i++){
+          speakers[i].addEventListener("click", function(e){
+    	    alert('お使いのブラウザは音声再生に対応していないようです。GoogleChromeでの利用をオススメします。');
+          }, {once: true});
+        }
+        return;
+      }
+      
+      var isSpeakerInitialized = false;
+      speechSynthesis.onvoiceschanged = function(){
+        if(isSpeakerInitialized) { return; }
+        isSpeakerInitialized = true;
+
+        var systemVoices = speechSynthesis.getVoices();
+        var speakers = document.querySelectorAll(".speaker");
+        for(i=0 ; i<speakers.length ; i++){
+          speakers[i].addEventListener("click", function(e){
+            var synth = new SpeechSynthesisUtterance();
+            synth.text = e.target.getAttribute("data-text");
+            synth.lang = e.target.getAttribute("data-lang");
+
+            for (var j = 0; j < systemVoices.length; j++) {
+              if (systemVoices[j].lang == synth.lang){
+                synth.voice = systemVoices[j];
+              }
+            }
+            if(!synth.voice){ alert('対応言語がありません:'+synth.lang); }
+            speechSynthesis.speak(synth);
+          }, {once: true});
+        }
+      }
+    };
+  </script>
+</body>
+</html>
+
+
