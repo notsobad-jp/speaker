@@ -10,23 +10,80 @@
   <meta name="keywords" content="speaker.js,speaker,音声,再生,ブラウザ,chrome,safari,firefox,iphone,android"/>
 
   <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.3/semantic.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/balloon-css/0.2.4/balloon.min.css">
+  <link href="https://fonts.googleapis.com/css?family=Lobster" rel="stylesheet">
+  <style>
+    .speaker {
+      cursor: pointer;
+    }
+  </style>
 </head>
 
-<body>
-  <div class="ui basic very padded segment" style="margin: 50px 10%;">
-    <div class="center aligned column">
-      <div class="ui relaxed horizontal list">
-        <div class="item">
-          <i class="speaker icon volume up" data-text="hello world" data-lang="en-US"></i>
+<body style="background:url('img/bg.gif');">
+  <div style="height:100vh;background-color:rgba(0,0,0,0.4);">
+    <div class="ui fluid container" style="margin-left:0!important;margin-right:0!important;">
+      <div class="ui center aligned padded basic segment" style="padding-top:100px">
+        <!--<h1 class="ui huge icon inverted header" style="font-family:'Lobster', cursive; font-size:4rem;">-->
+        <h1 class="ui huge icon inverted header" style="font-size:4rem;">
+          <img class="ui centered small image" src="img/logo.png" style="transform: scale(-1, 1);" />
+          <div class="content" style="line-height:6rem;">
+            Speaker.js
+          </div>
+          <div class="ui sub inverted header">
+            <span class="speaker" data-text="簡単コピペで、あなたのサイトがしゃべりだす" data-lang="ja-JP">
+              簡単コピペで、あなたのサイトがしゃべりだす
+            </span>
+          </div>
+        </h1>
+
+        <div class="ui hidden divider"></div>
+        <div>
+          <a href="#howto">
+            <button class="ui red right labeled large icon button">
+              <i class="icon download"></i>
+              Download for FREE
+            </button>
+          </a>
         </div>
-        <div class="item">
-          <i class="speaker icon volume up" data-text="이심전심" data-lang="ko-KR"></i>
+        <br>
+
+        <div class="ui hidden divider"></div>
+
+        <div class="center aligned segment">
+          <div class="ui horizontal list">
+            <div class="item">
+              <i class="speaker circular inverted orange large icon volume up" data-text="hello" data-lang="en-US"></i>
+            </div>
+            <div class="item">
+              <i class="speaker circular inverted blue large icon volume up" data-text="こんにちは" data-lang="ja-JP"></i>
+            </div>
+            <div class="item">
+              <i class="speaker circular inverted green large icon volume up" data-text="你好" data-lang="zh-CN"></i>
+            </div>
+            <div class="item">
+              <i class="speaker circular inverted purple large icon volume up" data-text="안녕하세요" data-lang="ko-KR"></i>
+            </div>
+            <div class="item">
+              <i class="speaker circular inverted pink large icon volume up" data-text="Buenas tardes" data-lang="es-ES"></i>
+            </div>
+            <div class="item">
+              <i class="speaker circular inverted brown large icon volume up" data-text="Bonjour" data-lang="fr-FR"></i>
+            </div>
+            <div class="item">
+              <i class="speaker circular inverted black large icon volume up" data-text="Guten tag" data-lang="de-DE"></i>
+            </div>
+          </div>
         </div>
-        <div class="item">
-          <i class="speaker icon volume up" data-text="こんにちは" data-lang="ja-JP"></i>
-        </div>
-        <div class="item">
-          <button class="speaker button" data-text="aaa" data-lang="en-US">speak</button>
+
+        <div class="ui hidden divider"></div>
+        <br>
+
+        <div class="ui horizontal inverted small divided link list">
+          <span class="item speaker" data-text="powered by NOT SO BAD" data-lang="en-GB">
+            Copyright © Speaker.js by
+            <a href="http://notosbad.jp" target="_blank">NOT SO BAD</a>
+            2016 All Rights Reserved.
+          </span>
         </div>
       </div>
     </div>
@@ -37,10 +94,6 @@
       if (typeof(speechSynthesis) == "undefined") {
         var speakers = document.querySelectorAll(".speaker");
         for(i=0 ; i<speakers.length ; i++){
-          if(speakers[i].tagName.toUpperCase()=='I' && speakers[i].parentNode.tagName.toUpperCase()=='SPAN') {
-            speakers[i].parentNode.dataset.tooltip = speakers[i].getAttribute("data-text");
-            speakers[i].parentNode.dataset.inverted = true;
-          }
           speakers[i].addEventListener("click", function(e){
             alert('お使いのブラウザは音声再生に対応していないようです。GoogleChromeでの利用をオススメします。');
           });
@@ -68,8 +121,7 @@
         for(i=0 ; i<speakers.length ; i++){
           var parent = speakers[i].parentNode;
           var span = document.createElement('span');
-          span.dataset.tooltip = speakers[i].getAttribute("data-text");
-          span.dataset.inverted = true;
+          span.setAttribute('data-balloon', speakers[i].getAttribute("data-text"));
           span.appendChild(speakers[i]);
           parent.appendChild(span);
 
@@ -83,14 +135,14 @@
                 synth.voice = systemVoices[j];
               }
             }
-            if(!synth.voice){ 
-              alert('ごめんなさい、お使いのブラウザがこの言語に対応していないようです...');
+            if(!synth.voice){
+              alert('ごめんなさい、お使いのブラウザが対応していない言語のようです...');
               return;
             }
             speechSynthesis.speak(synth);
           });
         }
-      } 
+      }
     };
   </script>
 </body>
