@@ -23,6 +23,7 @@
 
   <script>
     window.onload = function () {
+      alert("ready");
       if (!'SpeechSynthesisUtterance' in window) {
         var speakers = document.querySelectorAll(".speaker");
         for(i=0 ; i<speakers.length ; i++){
@@ -39,6 +40,11 @@
         isSpeakerInitialized = true;
 
         var systemVoices = speechSynthesis.getVoices();
+            for (var j = 0; j < systemVoices.length; j++) {
+              alert(systemVoices[j].lang);
+            }
+
+        
         var speakers = document.querySelectorAll(".speaker");
         for(i=0 ; i<speakers.length ; i++){
           speakers[i].addEventListener("click", function(e){
