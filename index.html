@@ -37,7 +37,24 @@
  　     alert("yes speech synthesis");
       
       var isSpeakerInitialized = false;
-      speechSynthesis.onvoiceschanged = function(){
+
+      if ('onvoiceschanged' in speechSynthesis) {
+        alert("exists");
+      else {
+        alert("not exists");
+      }
+      
+      if ('onvoiceschanged' in speechSynthesis) {
+        speechSynthesis.onvoiceschanged = function(){
+          afterVoiceChanged();
+        }
+      else {
+          afterVoiceChanged();
+      }
+       
+
+      
+      function afterVoiceChanged() {
  　     alert("on voice changed");
         if(isSpeakerInitialized) { return; }
         isSpeakerInitialized = true;
@@ -65,8 +82,9 @@
             speechSynthesis.speak(synth);
           }, {once: true});
         }
-      }
-    };
+      } 
+      
+      };
   </script>
 </body>
 </html>
