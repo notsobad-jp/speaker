@@ -2,15 +2,23 @@
 <head>
   <meta charset="utf-8">
   <title>speaker</title>
-  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+  <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.3/semantic.min.css">
 </head>
 <body>
-  <div style="margin: 10px 5%;">
-    <i class="speaker fa fa-volume-up" data-text="이심전심" data-lang="ko-KR"></i>
-    <br>
-    <span class="speaker" data-text="hello world" data-lang="en-US">&#x1F4E2</span>
-    <br>
-    <span class="speaker" data-text="こんにちは" data-lang="ja-JP">&#x1F4E2</span>
+  <div class="ui stackable three column centered grid">
+    <div class="center aligned column">
+      <div class="ui relaxed horizontal list">
+        <div class="item">
+          <span class="speaker" data-text="hello world" data-lang="en-US">&#x1F4E2</span>
+        </div>
+        <div class="item">
+          <span class="speaker" data-text="이심전심" data-lang="ko-KR">&#x1F4E2</span>
+        </div>
+        <div class="item">
+          <span class="speaker" data-text="こんにちは" data-lang="ja-JP">&#x1F4E2</span>
+        </div>
+      </div>
+    </div>
   </div>
 
   <script>
