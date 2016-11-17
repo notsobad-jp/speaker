@@ -25,6 +25,7 @@
     window.onload = function () {
       alert("ready");
       if (!'SpeechSynthesisUtterance' in window) {
+ 　     alert("no speech synthesis");
         var speakers = document.querySelectorAll(".speaker");
         for(i=0 ; i<speakers.length ; i++){
           speakers[i].addEventListener("click", function(e){
@@ -33,13 +34,16 @@
         }
         return;
       }
+ 　     alert("yes speech synthesis");
       
       var isSpeakerInitialized = false;
       speechSynthesis.onvoiceschanged = function(){
+ 　     alert("on voice changed");
         if(isSpeakerInitialized) { return; }
         isSpeakerInitialized = true;
 
         var systemVoices = speechSynthesis.getVoices();
+ 　     alert(systemVoices);
             for (var j = 0; j < systemVoices.length; j++) {
               alert(systemVoices[j].lang);
             }
