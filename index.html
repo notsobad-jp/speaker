@@ -16,10 +16,22 @@
     .speaker {
       cursor: pointer;
     }
+
+    body:before {
+      z-index: 0;
+      content: "";
+      display: block;
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background-color:rgba(255,255,255,0.2);
+    }
   </style>
 </head>
 
-<body style="background:url('img/bg.gif');">
+<body style="background-image:url('img/bg.gif');">
   <div class="ui fluid container" style="margin-left:0!important;margin-right:0!important;">
     <div class="ui center aligned padded basic segment" style="padding-top:100px">
       <!--<h1 class="ui huge icon inverted header" style="font-family:'Lobster', cursive; font-size:4rem;">-->
@@ -79,7 +91,7 @@
       <div class="ui hidden divider"></div>
       <br>
 
-      <div class="ui horizontal small divided link list">
+      <div class="ui link list">
         <span class="item speaker" data-text="powered by NOT SO BAD" data-lang="en-GB">
           Copyright © Speaker.js by
           <a href="http://notosbad.jp" target="_blank">NOT SO BAD</a>
