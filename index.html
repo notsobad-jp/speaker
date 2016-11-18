@@ -20,71 +20,71 @@
 </head>
 
 <body style="background:url('img/bg.gif');">
-  <div style="height:100vh;background-color:rgba(0,0,0,0.4);">
-    <div class="ui fluid container" style="margin-left:0!important;margin-right:0!important;">
-      <div class="ui center aligned padded basic segment" style="padding-top:100px">
-        <!--<h1 class="ui huge icon inverted header" style="font-family:'Lobster', cursive; font-size:4rem;">-->
-        <h1 class="ui huge icon inverted header" style="font-size:4.5rem;">
-          <img class="ui centered small image" src="img/logo.png" />
-          <div class="content" style="line-height:7rem;">
+  <div class="ui fluid container" style="margin-left:0!important;margin-right:0!important;">
+    <div class="ui center aligned padded basic segment" style="padding-top:100px">
+      <!--<h1 class="ui huge icon inverted header" style="font-family:'Lobster', cursive; font-size:4rem;">-->
+      <h1 class="ui huge icon header" style="font-size:4.5rem;">
+        <img class="ui centered small image" src="img/logo.png" />
+        <div class="content" style="line-height:7rem;">
+          <span class="speaker" data-text="Welcome to Speaker.js!" data-lang="en-US">
             Speaker.js
-          </div>
-          <div class="ui sub inverted header" style="font-size:1.3rem;font-weight:bold;">
-            <span class="speaker" data-text="簡単コピペで、あなたのサイトがしゃべりだす" data-lang="ja-JP">
-              簡単コピペで、あなたのサイトがしゃべりだす
-            </span>
-          </div>
-        </h1>
-
-        <div class="ui hidden divider"></div>
-        <div>
-          <a href="https://github.com/notsobad-jp/speakerjs" target="_blank">
-            <button class="ui red right labeled large icon button">
-              <i class="icon download"></i>
-              Download at GitHub
-            </button>
-          </a>
-        </div>
-        <br>
-
-        <div class="ui hidden divider"></div>
-
-        <div class="center aligned segment">
-          <div class="ui horizontal list">
-            <div class="item">
-              <i class="speaker circular inverted orange large icon volume up" data-text="hello" data-lang="en-US"></i>
-            </div>
-            <div class="item">
-              <i class="speaker circular inverted blue large icon volume up" data-text="こんにちは" data-lang="ja-JP"></i>
-            </div>
-            <div class="item">
-              <i class="speaker circular inverted green large icon volume up" data-text="你好" data-lang="zh-CN"></i>
-            </div>
-            <div class="item">
-              <i class="speaker circular inverted purple large icon volume up" data-text="안녕하세요" data-lang="ko-KR"></i>
-            </div>
-            <div class="item">
-              <i class="speaker circular inverted pink large icon volume up" data-text="Buenas tardes" data-lang="es-ES"></i>
-            </div>
-            <div class="item">
-              <i class="speaker circular inverted brown large icon volume up" data-text="Bonjour" data-lang="fr-FR"></i>
-            </div>
-            <div class="item">
-              <i class="speaker circular inverted black large icon volume up" data-text="Guten tag" data-lang="de-DE"></i>
-            </div>
-          </div>
-        </div>
-
-        <div class="ui hidden divider"></div>
-        <br>
-
-        <div class="ui horizontal inverted small divided link list">
-          <span class="item speaker" data-text="powered by NOT SO BAD" data-lang="en-GB">
-            Copyright © Speaker.js by
-            <a href="http://notosbad.jp" target="_blank">NOT SO BAD</a>
-            2016 All Rights Reserved.
           </span>
         </div>
+        <div class="ui sub header" style="font-size:1.4rem;font-weight:bold;">
+          <span class="speaker" data-text="簡単コピペで、あなたのサイトがしゃべりだす" data-lang="ja-JP">
+            簡単コピペで、あなたのサイトがしゃべりだす
+          </span>
+        </div>
+      </h1>
+
+      <div class="ui hidden divider"></div>
+      <div>
+        <a href="https://github.com/notsobad-jp/speakerjs" target="_blank">
+          <button class="ui red right labeled large icon button">
+            <i class="icon download"></i>
+            Download at GitHub
+          </button>
+        </a>
+      </div>
+      <br>
+
+      <div class="ui hidden divider"></div>
+
+      <div class="center aligned segment">
+        <div class="ui horizontal list">
+          <div class="item">
+            <i class="speaker circular inverted orange large icon volume up" data-text="hello" data-lang="en-US"></i>
+          </div>
+          <div class="item">
+            <i class="speaker circular inverted blue large icon volume up" data-text="こんにちは" data-lang="ja-JP"></i>
+          </div>
+          <div class="item">
+            <i class="speaker circular inverted green large icon volume up" data-text="你好" data-lang="zh-CN"></i>
+          </div>
+          <div class="item">
+            <i class="speaker circular inverted purple large icon volume up" data-text="안녕하세요" data-lang="ko-KR"></i>
+          </div>
+          <div class="item">
+            <i class="speaker circular inverted pink large icon volume up" data-text="Buenas tardes" data-lang="es-ES"></i>
+          </div>
+          <div class="item">
+            <i class="speaker circular inverted brown large icon volume up" data-text="Bonjour" data-lang="fr-FR"></i>
+          </div>
+          <div class="item">
+            <i class="speaker circular inverted black large icon volume up" data-text="Guten tag" data-lang="de-DE"></i>
+          </div>
+        </div>
+      </div>
+
+      <div class="ui hidden divider"></div>
+      <br>
+
+      <div class="ui horizontal small divided link list">
+        <span class="item speaker" data-text="powered by NOT SO BAD" data-lang="en-GB">
+          Copyright © Speaker.js by
+          <a href="http://notosbad.jp" target="_blank">NOT SO BAD</a>
+          2016 All Rights Reserved.
+        </span>
       </div>
     </div>
   </div>
@@ -122,6 +122,7 @@
           var parent = speakers[i].parentNode;
           var span = document.createElement('span');
           span.setAttribute('data-balloon', speakers[i].getAttribute("data-text"));
+          span.setAttribute('style', 'line-height:1rem');
           span.appendChild(speakers[i]);
           parent.appendChild(span);
 
