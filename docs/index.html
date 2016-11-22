@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+
+  <title>Speaker.js</title>
+  <meta name="description" content=""/>
+  <meta name="keywords" content="speaker.js,speaker,音声,再生,ブラウザ,chrome,safari,firefox,iphone,android"/>
+
+  <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.3/semantic.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/balloon-css/0.2.4/balloon.min.css">
+  <style>
+    .speaker { cursor: pointer; }
+    [data-balloon]:hover:after, [data-balloon]:hover:before { line-height: 1rem; }
+
+    body:before {
+      z-index: 0;
+      content: "";
+      display: block;
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background-color:rgba(255,255,255,0.4);
+    }
+
+    /* Gist Dark Theme */
+    pre {
+      padding: 20px;
+      color: #ffffff;
+      background: #434343; }
+
+    body .gist .line-data, body .gist .file-data, body .gist .line-numbers {
+      color: #ffffff;
+      background: #434343; }
+    body .gist .gist-meta {
+      color: #ffffff;
+      background: #000000; }
+    body .gist .pl-vo, body .gist .pl-v, body .gist .pl-vpf {
+      color: #ffffff; }
+    body .gist .pl-en, body .gist .pl-c1, body .gist .pl-s3 {
+      color: #ECAC29; }
+    body .gist .pl-k, body .gist .pl-st {
+      color: #7373F2; }
+    body .gist .pl-s1, body .gist .pl-pds {
+      color: #76A22F; }
+  </style>
+</head>
+
+<body style="background-image:url('img/bg.gif');">
+  <div class="ui fluid container" style="margin-left:0!important;margin-right:0!important;">
+    <div class="ui center aligned padded basic segment" style="padding-top:70px">
+      <h1 class="ui huge icon header" style="font-size:4.5rem;">
+        <img class="ui centered small image" src="img/logo.png" />
+        <div class="content" style="line-height:7rem;">
+          <span class="speaker" data-text="Welcome to Speaker.js!" data-lang="en-US" data-balloon="Welcome to Speaker.js!">
+            Speaker.js
+          </span>
+        </div>
+        <div class="ui sub header" style="font-size:1.4rem;font-weight:bold;">
+          <span class="speaker" data-text="簡単コピペで、あなたのサイトがしゃべりだす" data-lang="ja-JP" data-balloon="簡単コピペで、あなたのサイトがしゃべりだす">
+            簡単コピペで、あなたのサイトがしゃべりだす
+          </span>
+        </div>
+      </h1>
+
+      <div class="ui hidden divider"></div>
+      <div>
+        <a href="https://github.com/notsobad-jp/speakerjs" target="_blank">
+          <button class="ui red right labeled large icon button">
+            <i class="icon download"></i>
+            Download at GitHub
+          </button>
+        </a>
+      </div>
+      <br>
+
+      <div class="ui hidden divider"></div>
+
+      <div class="center aligned segment">
+        <div class="ui horizontal list">
+          <div class="item">
+            <span  data-balloon="hello">
+              <i class="speaker circular inverted orange large icon volume up" data-text="hello" data-lang="en-US"></i>
+            </span>
+          </div>
+          <div class="item">
+            <span  data-balloon="こんにちは">
+              <i class="speaker circular inverted blue large icon volume up" data-text="こんにちは" data-lang="ja-JP"></i>
+            </span>
+          </div>
+          <div class="item">
+            <span  data-balloon="你好">
+              <i class="speaker circular inverted green large icon volume up" data-text="你好" data-lang="zh-CN"></i>
+            </span>
+          </div>
+          <div class="item">
+            <span  data-balloon="안녕하세요">
+              <i class="speaker circular inverted purple large icon volume up" data-text="안녕하세요" data-lang="ko-KR"></i>
+            </span>
+          </div>
+          <div class="item">
+            <span  data-balloon="Buenas tardes">
+              <i class="speaker circular inverted pink large icon volume up" data-text="Buenas tardes" data-lang="es-ES"></i>
+            </span>
+          </div>
+          <div class="item">
+            <span  data-balloon="Bonjour">
+              <i class="speaker circular inverted brown large icon volume up" data-text="Bonjour" data-lang="fr-FR"></i>
+            </span>
+          </div>
+          <div class="item">
+            <span  data-balloon="Guten tag">
+              <i class="speaker circular inverted black large icon volume up" data-text="Guten tag" data-lang="de-DE"></i>
+            </span>
+          </div>
+        </div>
+      </div>
+
+      <div class="ui hidden divider"></div>
+
+      <div class="ui two column centered stackable grid">
+        <div class="column">
+          <script src="https://gist.github.com/Tomomichi/33ca51d5d7750958d666c9ac29e98e31.js"></script>
+        </div>
+      </div>
+
+
+      <br>
+
+      <div>
+        <span data-balloon="powered by NOT SO BAD">
+          <span class="item speaker" data-text="powered by NOT SO BAD" data-lang="en-GB">
+            Copyright © Speaker.js by
+            <a href="http://notosbad.jp" target="_blank">NOT SO BAD</a>
+            2016 All Rights Reserved.
+          </span>
+        </span>
+      </div>
+      <div class="ui link list">
+        <span class="item">
+          Background Gif by <a href="http://giphy.com/gifs/pattern-background-memphisgroup-xThuWjC7yute751y0g" target="_blank">ELMØ</a> from GIPHY.
+          &nbsp;
+          Speaker Logo by <a href="https://thenounproject.com/term/horn/578000/" target="_blank">Stock Image Folio</a> from Noun Project under <a href="http://creativecommons.org/licenses/by/3.0/us/">CreativeCommons.
+        </span>
+      </div>
+    </div>
+  </div>
+
+  <script type="text/javascript" src="./speaker.min.js"></script>
+</body>
+</html>

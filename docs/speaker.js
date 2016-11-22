@@ -1,28 +1,38 @@
 /**
 speaker.js
-v1.0.0
+v1.1.0
 
 Copyright (c) 2016 NOT SO BAD
 This software is released under the MIT License.
 http://opensource.org/licenses/mit-license.php
 */
 window.onload = function () {
-  if (!'SpeechSynthesisUtterance' in window) {
+  if (typeof(speechSynthesis) == "undefined") {
     var speakers = document.querySelectorAll(".speaker");
     for(i=0 ; i<speakers.length ; i++){
       speakers[i].addEventListener("click", function(e){
-	    alert('お使いのブラウザは音声再生に対応していないようです。GoogleChromeでの利用をオススメします。');
-      }, {once: true});
+        alert('お使いのブラウザは音声再生に対応していないようです。GoogleChromeでの利用をオススメします。');
+      });
     }
     return;
   }
-  
+
   var isSpeakerInitialized = false;
-  speechSynthesis.onvoiceschanged = function(){
+
+  if ('onvoiceschanged' in speechSynthesis) {
+    speechSynthesis.onvoiceschanged = function(){
+      setSpeaker();
+    }
+  }else {
+    setSpeaker();
+  }
+
+  function setSpeaker() {
     if(isSpeakerInitialized) { return; }
     isSpeakerInitialized = true;
 
     var systemVoices = speechSynthesis.getVoices();
+
     var speakers = document.querySelectorAll(".speaker");
     for(i=0 ; i<speakers.length ; i++){
       speakers[i].addEventListener("click", function(e){
@@ -35,8 +45,12 @@ window.onload = function () {
             synth.voice = systemVoices[j];
           }
         }
+        if(!synth.voice){
+          alert('ごめんなさい、お使いのブラウザが対応していない言語のようです...');
+          return;
+        }
         speechSynthesis.speak(synth);
-      }, {once: true});
+      });
     }
   }
 };
